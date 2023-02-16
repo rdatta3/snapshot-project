@@ -5,7 +5,6 @@ const OurForm = (props) => {
         <div className="form-container">
             <form className="search-form" onSubmit={(e) => formSubmit(e)}>
                 <label htmlFor="search-box" className="form-label">
-                    Search using keyword
                     <input
                         id="search-box"
                         type="text"
@@ -15,7 +14,7 @@ const OurForm = (props) => {
                         value={keyword}
                     />
                 </label>
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-primary ">
                     Search
                 </button>
             </form>

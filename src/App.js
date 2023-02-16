@@ -11,7 +11,7 @@ function App() {
 					All Snaps
 				</h>
 			</div>
-			<div className="grid-container">
+			<div className="body-content">
 				<GridContainer />
 			</div>
 		</div>

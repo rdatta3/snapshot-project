@@ -1,8 +1,7 @@
-import Row from "react-bootstrap/Row";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import OurForm from "./OurForm";
-import OurCard from "./OurCard";
+import Carousel from 'react-bootstrap/Carousel';
 const GridContainer = (props) => {
     const [images, setImages] = useState([]);
     const [keyword, setKeyword] = useState("");
@@ -13,17 +12,24 @@ const GridContainer = (props) => {
         setKeyword("");
     };
     useEffect(() => {
+    console.log(searchword)
         axios
             .get(
                 `https://api.unsplash.com/search/photos?page=1&query=${searchword}&orientation=squarish&client_id=DcatpZ9T66kFddYG90iGQQ_2EnwEWQBX83oklAEL6rQ`
             )
             .then((response) => {
                 setImages(response.data.results);
+
             })
             .catch((err) => {
                 console.log("Error happened while fetching images data");
             });
     }, [searchword]);
+    if(images.length==0)
+                    {
+                       return <h2>Loading...</h2>
+                    }
+
     return (
         <>
             <OurForm
@@ -31,17 +37,27 @@ const GridContainer = (props) => {
                 keyword={keyword}
                 setKeyword={setKeyword}
             />
-            <div className="grid-container">
-                <Row xs={1} md={3} className="g-4">
-                    {images.length === 0 ? (
-                        <h2>Loading.....</h2>
-                    ) : (
-                        images.map((val, idx) => {
-                            return <OurCard key={idx} imageItem={val} />;
-                        })
-                    )}
-                </Row>
-            </div>
+
+
+
+            <Carousel >
+
+               { images.map((val, idx) => {
+                  return <Carousel.Item>
+                    <img
+                      className="d-block w-100 imageSize "
+                      src={val.urls.full}
+                      alt="First slide"
+                    />
+                    <Carousel.Caption>
+                      <h3>{searchword}</h3>
+                      <p>{val.alt_description}</p>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                  })}
+
+                </Carousel>
+
         </>
     );
 };
