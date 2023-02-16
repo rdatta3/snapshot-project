@@ -1,0 +1,29 @@
+.App {
+	height: 100vh;
+}
+
+.heading-container {
+
+	text-align: center;
+	padding: 5%;
+}
+.heading {
+    display:block;
+    text-align:center;
+    font-size:55px;
+    font-family:Verdana, sans-serif;
+}
+
+.grid-container {
+    display:grid;
+	padding: 2% 5% 2% 5%;
+	background-color: #e8e6df;
+	height: 100%;
+	background-size: 100%;
+}
+
+.form-container {
+    text-align:center;
+    margin-top:0;
+    margin-bottom:30;
+}
