@@ -25,7 +25,7 @@ const GridContainer = (props) => {
                 console.log("Error happened while fetching images data");
             });
     }, [searchword]);
-    if(images.length==0)
+    if(images.length===0)
                     {
                        return <h2>Loading...</h2>
                     }
@@ -40,18 +40,18 @@ const GridContainer = (props) => {
 
 
 
-            <Carousel >
+            <Carousel>
 
                { images.map((val, idx) => {
-                  return <Carousel.Item>
+                  return <Carousel.Item className="Hover">
                     <img
-                      className="d-block w-100 imageSize "
+                      className="d-block w-100 imageSize"
                       src={val.urls.full}
                       alt="First slide"
                     />
-                    <Carousel.Caption>
-                      <h3>{searchword}</h3>
-                      <p>{val.alt_description}</p>
+                    <Carousel.Caption >
+                      <h1 className="content-text">{searchword}</h1>
+                      <h3 className="content-text">{val.alt_description}</h3>
                     </Carousel.Caption>
                   </Carousel.Item>
                   })}
